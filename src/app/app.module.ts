@@ -12,6 +12,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
+import { UserComponent } from './pages/user/user.component';
+import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
+import { ClientsComponent } from './pages/clients/clients.component';
 
 
 @NgModule({
@@ -27,7 +30,9 @@ import { ComponentsModule } from './components/components.module';
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    AuthLayoutComponent
+    AuthLayoutComponent,
+    NotAuthorizedComponent,
+    ClientsComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
