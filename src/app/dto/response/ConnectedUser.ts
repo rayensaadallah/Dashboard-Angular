@@ -1,9 +1,8 @@
-export interface RegisterDto {
+export interface ConnectedUser {
     image:string;
     username: string;
     email:string;
-    password: string;
     accessToken:string;
-    agreeToPolicy: false ;
+    roles: string[] ;
   }
   

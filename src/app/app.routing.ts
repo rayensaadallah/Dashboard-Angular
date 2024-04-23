@@ -12,11 +12,6 @@ import { NotAuthorizedComponent } from './not-authorized/not-authorized.componen
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
-    pathMatch: 'full',
-  },
-  {
-    path: '',
     component: AdminLayoutComponent, canActivate: [AuthorizationGuard], data: {
       roles: ['ROLE_ADMIN']
     },
@@ -27,7 +22,6 @@ const routes: Routes = [
       }
     ]
   },
-
   {
     path: '',
     component: AuthLayoutComponent,

@@ -1,7 +1,7 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
@@ -15,6 +15,12 @@ import { ComponentsModule } from './components/components.module';
 import { UserComponent } from './pages/user/user.component';
 import { NotAuthorizedComponent } from './not-authorized/not-authorized.component';
 import { ClientsComponent } from './pages/clients/clients.component';
+import { AppHttpInterceptor } from './interceptors/app-http.interceptor';
+import { ServicesComponent } from './pages/services/services.component';
+import { OrdersComponent } from './pages/orders/orders.component';
+import { PrestatairesComponent } from './pages/prestataires/prestataires.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -23,6 +29,7 @@ import { ClientsComponent } from './pages/clients/clients.component';
     FormsModule,
     HttpClientModule,
     ComponentsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     NgbModule,
     RouterModule,
     AppRoutingModule
@@ -33,8 +40,12 @@ import { ClientsComponent } from './pages/clients/clients.component';
     AuthLayoutComponent,
     NotAuthorizedComponent,
     ClientsComponent,
+    ServicesComponent,
+    OrdersComponent,
+    PrestatairesComponent,
   ],
-  providers: [],
+  providers: [{provide:HTTP_INTERCEPTORS,useClass: AppHttpInterceptor, multi : true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
